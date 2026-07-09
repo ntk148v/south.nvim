@@ -14,6 +14,7 @@ A bright, summery ~Emacs~ Neovim theme 🌱☀️🌊
 vim.pack.add({
     { src = 'https://github.com/arnauKL/south.nvim' }
 })
+vim.cmd.colorscheme('south')
 ```
 
 ### Using `lazy.nvim` (Neovim 0.7+)
@@ -25,9 +26,6 @@ vim.pack.add({
     priority = 1000,
     config = function()
         -- Optional configuration goes here
-        require('south').setup({
-            transparent = true -- Set to true for a transparent background
-        })
         vim.cmd.colorscheme('south')
     end
 }
@@ -40,7 +38,6 @@ transparent backgrounds. It is set to `false` by default.
 require 'south'.setup({
     transparent = true
 })
-vim.cmd.colorscheme('south')
 ```
 
 ## Supported plugins
@@ -55,6 +52,10 @@ for other plugins, feel free to submit a PR.
 
 ## Screenshots
 
-Some lua and C with oil.nvim
+Some zig and C with oil.nvim:
 
-![assets/Screenshot From 2026-07-09 14-16-38.png]
+![Some zig, C and oil.nvim](assets/zig_c_oil.png)
+
+Some lua and telescope.nvim:
+
+![Some lua and telescope.nvim](assets/lua_and_telescope.png)
