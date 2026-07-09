@@ -4,23 +4,24 @@ local M = {}
 -- Default user settings
 M.config = {
     transparent = false,
+    transparent_floats = false,
 }
 
 M.setup = function(opts)
-    M.config = vim.tbl_deep_extend("force", M.config, opts or {})
+    M.config = vim.tbl_deep_extend('force', M.config, opts or {})
 
     if vim.g.colors_name then
-        vim.cmd("hi clear")
+        vim.cmd('hi clear')
     end
 
-    vim.g.colors_name = "south"
-    vim.o.background = "light"
+    vim.g.colors_name = 'south'
+    vim.o.background = 'light'
 
-    local cp = require("south.palette")
+    local cp = require 'south.palette'
 
     -- Apply user transparency configuration
-    local bg = M.config.transparent and "NONE" or cp.background
-    local bg_dark = M.config.transparent and "NONE" or cp.darker_background
+    local bg = M.config.transparent and 'NONE' or cp.background
+    local bg_dark = M.config.transparent and 'NONE' or cp.darker_background
 
     local groups = {
         -- General
