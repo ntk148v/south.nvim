@@ -41,7 +41,7 @@ M.setup = function(opts)
         NormalFloat                    = { fg = cp.black, bg = float_bg },
         FloatBorder                    = { fg = cp.cool_medium_grey, bg = float_bg },
         Visual                         = { bg = cp.selection },
-        CursorLine                     = { bg = bg_dark },
+        CursorLine                     = { bg = cp.darker_background },
         WinSeparator                   = { fg = cp.cool_dark_grey },
         Underlined                     = { fg = cp.denim, underline = true },
         LineNr                         = { fg = cp.cool_medium_grey, italic = italic_linenums },
