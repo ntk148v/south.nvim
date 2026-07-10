@@ -2,27 +2,39 @@
 
 A bright, summery ~Emacs~ Neovim theme 🌱☀️🌊
 
-This is a Neovim port of the original Emacs
-[south](https://github.com/SophieBosio/south) theme. All credit goes to
-Sophie Bosio, thanks for creating this lovely theme.
+> This is a Neovim port of the original Emacs
+> [south](https://github.com/SophieBosio/south) theme. All credit goes to
+> Sophie Bosio, thanks for creating this lovely theme.
+
+Licensed under GPL-3.0.
 
 The text colours are WCAG AA compliant against the background, except the
-colour used for comments and some UI elements, but not WCAG AAA compliant.
+colour used for comments and specific UI elements, but not WCAG AAA compliant.
 
-# Screenshots
+## Screenshots
 
-# Installation and configuration
+## Installation and configuration
 
-## Using Neovim 0.12+'s native `vim.pack`:
+### Using Neovim 0.12+'s native package manager `vim.pack`:
 
 ```lua
 vim.pack.add({
-    'https://github.com/arnauKL/south.nvim'
+    { src = 'https://github.com/arnauKL/south.nvim' }
 })
+
+-- configuration (optional)
+require 'south'.setup({
+    transparent = true,
+    darker_floats = true,
+    styles = {
+        italic_linenums = false,
+    }
+})
+
 vim.cmd.colorscheme('south')
 ```
 
-## Using `lazy.nvim` (Neovim 0.7+)
+### Using `lazy.nvim` (Neovim 0.7+)
 
 ```lua
 {
@@ -31,32 +43,34 @@ vim.cmd.colorscheme('south')
     priority = 1000,
     config = function()
         -- Optional configuration goes here
+        require('south').setup({
+            transparent = false,
+            -- ...
+        })
         vim.cmd.colorscheme('south')
     end
 }
 ```
 
-
-## Configuration
+### Configuration
 
 Right now, there are only a few configuration settings. By default, they are
 all set to be as close to the original emacs theme:
 
 ```lua
 require('south').setup({
-    transparent = false,        -- skips setting backgrounds if true
+    transparent = false,        -- Skips setting editor backgrounds if true
+    darker_floats = false,      -- Forces solid floating windows/menus even if transparent
     styles = {
-        italics = true,         -- global switch
-        italic_comments = true, -- individual settings if `italics = true`
-        italic_linenums = true, 
-        bold_keywords = false,
-        darker_floats = false,
+        italics = true,         -- Master switch for font slant overrides
+        italic_comments = true, -- Toggles italicized comments (ignored if italics = false)
+        italic_linenums = true, -- Toggles italicized line numbers (ignored if italics = false)
+        bold_keywords = false,  -- Applies bold weight to syntax keywords
     }
 })
-vim.cmd.colorscheme('south')
 ```
 
-# Supported plugins
+## Supported plugins
 
 I developed this port mostly for myself so I've only added support
 for the plugins I use:
@@ -64,5 +78,6 @@ for the plugins I use:
 - Telescope.nvim
 - Oil.nvim
 
-Everything else falls back to editor highlights. If you'd like to add support
-for other plugins, feel free to submit a PR!
+I also included some styling for Markdown headers. Everything else falls back
+to editor highlights. If you'd like to add support for other plugins, feel
+free to submit a PR!
