@@ -30,7 +30,7 @@ M.setup = function(opts)
     local italic_linenums = M.config.styles.italics and M.config.styles.italic_linenums
     local bold_keywords = M.config.styles.bold_keywords and true or false
     local float_bg = M.config.darker_floats and cp.darker_background or
-        bg_dark -- i'll assume that if true, the user does not transparency
+        bg_dark -- i'll assume that if true, the user does not want transparency
 
     local groups = {
         -- General
@@ -39,7 +39,7 @@ M.setup = function(opts)
         StatusLine                     = { fg = cp.black, bg = cp.cool_light_grey },
         StatusLineNC                   = { fg = cp.cool_dark_grey, bg = cp.cool_light_grey },
         NormalFloat                    = { fg = cp.black, bg = float_bg },
-        FloatBorder                    = { fg = cp.cool_medium_grey, bg = bg },
+        FloatBorder                    = { fg = cp.cool_medium_grey, bg = float_bg },
         Visual                         = { bg = cp.selection },
         CursorLine                     = { bg = bg_dark },
         WinSeparator                   = { fg = cp.cool_dark_grey },
@@ -48,6 +48,11 @@ M.setup = function(opts)
         CursorLineNr                   = { fg = cp.black, italic = italic_linenums },
         ErrorMsg                       = { fg = cp.auburn },
         WarningMsg                     = { fg = cp.orange },
+
+        Pmenu                          = { fg = cp.black, bg = float_bg },
+        PmenuSel                       = { fg = cp.black, bg = cp.selection },
+        PmenuSbar                      = { bg = cp.cool_medium_grey },
+        PmenuThumb                     = { bg = cp.cool_dark_grey },
 
         DiagnosticError                = { fg = cp.auburn },
         DiagnosticWarn                 = { fg = cp.orange },
@@ -62,11 +67,6 @@ M.setup = function(opts)
         LspReferenceText               = { bg = cp.light_blue_highlight },
         LspReferenceRead               = { bg = cp.light_blue_highlight },
         LspReferenceWrite              = { bg = cp.medium_blue_highlight, bold = true },
-
-        Pmenu                          = { fg = cp.black, bg = bg_dark },
-        PmenuSel                       = { fg = cp.black, bg = cp.selection },
-        PmenuSbar                      = { bg = cp.cool_medium_grey },
-        PmenuThumb                     = { bg = cp.cool_dark_grey },
 
         Search                         = { fg = cp.black, bg = cp.medium_blue_highlight },
         IncSearch                      = { fg = cp.black, bg = cp.medium_yellow_highlight, bold = true },
@@ -100,10 +100,12 @@ M.setup = function(opts)
         DiffText                       = { bg = cp.dark_blue_highlight },
 
         -- Telescope.nvim
-        TelescopeNormal                = { fg = cp.black, bg = bg },
-        TelescopeBorder                = { fg = cp.cool_medium_grey, bg = bg },
-        TelescopePromptNormal          = { fg = cp.black, bg = bg_dark },
-        TelescopePromptBorder          = { fg = cp.denim, bg = bg_dark },
+        TelescopeNormal                = { fg = cp.black, bg = float_bg },
+        TelescopeBorder                = { fg = cp.cool_medium_grey, bg = float_bg },
+        TelescopeResultsNormal         = { fg = cp.black, bg = float_bg },
+        TelescopePreviewNormal         = { fg = cp.black, bg = float_bg },
+        TelescopePromptNormal          = { fg = cp.black, bg = float_bg },
+        TelescopePromptBorder          = { fg = cp.denim, bg = float_bg },
         TelescopeSelection             = { bg = cp.selection },
         TelescopeMatching              = { fg = cp.cobalt, bold = true },
 
@@ -126,7 +128,6 @@ M.setup = function(opts)
         ["@markup.heading.4.markdown"] = { fg = cp.grass, bold = true },
         ["@markup.heading.5.markdown"] = { fg = cp.aqua, bold = true },
         ["@markup.heading.6.markdown"] = { fg = cp.auburn, bold = true },
-        ["@markup.raw.block.markdown"] = { bg = cp.darker_background },
         ["@markup.heading.typst"]      = { fg = cp.denim, bold = true },
     }
 
